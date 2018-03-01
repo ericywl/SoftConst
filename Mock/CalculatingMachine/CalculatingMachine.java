@@ -1,5 +1,3 @@
-package CalculatingMachine;//package CalculatorPackage;
-    
 interface Printer {
      void print(String string);
 }

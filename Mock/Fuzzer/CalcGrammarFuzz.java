@@ -1,5 +1,3 @@
-package FuzzingCalc;
-
 /**
  * Grammar
  * <p>

@@ -1,5 +1,3 @@
-package FindMax;
-
-public interface Sorter { 
+public interface Sorter {
     int[] sort(int[] inputArr);
 }

@@ -1,5 +1,3 @@
-package CalculatingMachine;
-
 import org.junit.Test;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JUnit4Mockery;
