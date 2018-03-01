@@ -14,9 +14,16 @@ public class CalcGrammarFuzz {
     private int count;
     private int limit;
 
-    public String generate(int limit) {
-        count = 0;
+    public CalcGrammarFuzz() {
+        limit = 28000;
+    }
+
+    public CalcGrammarFuzz(int limit) {
         this.limit = limit;
+    }
+
+    public String generate() {
+        count = 0;
 
         return genExpression();
     }
@@ -114,6 +121,6 @@ public class CalcGrammarFuzz {
 
     public static void main(String[] args) {
         CalcGrammarFuzz fuzz = new CalcGrammarFuzz();
-        System.out.println(fuzz.generate(20000));
+        System.out.println(fuzz.generate());
     }
 }
