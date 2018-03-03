@@ -17,7 +17,7 @@ public class CalculatingMachine {
 
     public void processAdd(int x, int y) {
         int result = calculator.add(x, y);
-        //printer.print("result is " + result);
+        // printer.print("result is " + result);
     }
 
 }

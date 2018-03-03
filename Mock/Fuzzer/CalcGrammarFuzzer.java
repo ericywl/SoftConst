@@ -8,25 +8,22 @@
  * Integer := Digit | IntegerDigit
  * Digit := [0-9]
  */
-public class CalcGrammarFuzz {
-    private int count;
-    private int limit;
+public class CalcGrammarFuzzer {
+    private static int count;
+    private static int limit = 28000;
 
-    public CalcGrammarFuzz() {
-        limit = 28000;
-    }
-
-    public CalcGrammarFuzz(int limit) {
-        this.limit = limit;
-    }
-
-    public String generate() {
+    public static String fuzz() {
         count = 0;
-
         return genExpression();
     }
 
-    private String genExpression() {
+    public static String fuzz(int newLimit) {
+        count = 0;
+        limit = newLimit;
+        return genExpression();
+    }
+
+    private static String genExpression() {
         int randNum = randomWithRange(1, 3);
         if (count > limit) randNum = 3;
 
@@ -45,7 +42,7 @@ public class CalcGrammarFuzz {
         }
     }
 
-    private String genTerm() {
+    private static String genTerm() {
         int randNum = randomWithRange(1, 3);
         if (count > limit) randNum = 3;
 
@@ -64,7 +61,7 @@ public class CalcGrammarFuzz {
         }
     }
 
-    private String genFactor() {
+    private static String genFactor() {
         int randNum = randomWithRange(1, 4);
         if (count > limit) randNum = 4;
 
@@ -87,7 +84,7 @@ public class CalcGrammarFuzz {
         }
     }
 
-    private String genInteger() {
+    private static String genInteger() {
         int randNum = randomWithRange(1, 2);
         if (count > limit) randNum = 1;
 
@@ -103,12 +100,12 @@ public class CalcGrammarFuzz {
         }
     }
 
-    private String genDigit() {
+    private static String genDigit() {
         int randNum = randomWithRange(0, 9);
         return String.valueOf(randNum);
     }
 
-    private int randomWithRange(int min, int max) {
+    private static int randomWithRange(int min, int max) {
         if (min > max) {
             throw new IllegalArgumentException("Min cannot be greater than max.");
         }
@@ -118,7 +115,6 @@ public class CalcGrammarFuzz {
     }
 
     public static void main(String[] args) {
-        CalcGrammarFuzz fuzz = new CalcGrammarFuzz();
-        System.out.println(fuzz.generate());
+        System.out.println(CalcGrammarFuzzer.fuzz());
     }
 }
