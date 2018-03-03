@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <time.h>
 #include <stdio.h>
+a
 
 int main() {
 	char* input;

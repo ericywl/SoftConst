@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class AlphaNumFuzzer {
     private static String alphaNum =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
@@ -6,9 +8,9 @@ public class AlphaNumFuzzer {
 
     public static String fuzz() {
         StringBuilder strBld = new StringBuilder();
-        int limit = RandomRange.randomWithRange(0, 1024);
+        int limit = new Random().nextInt(1025);
         for (int i = 0, len = alphaNum.length(); i < limit; i++) {
-            int index = RandomRange.randomWithRange(0, len - 1);
+            int index = new Random().nextInt(len);
             strBld.append(alphaNum.charAt(index));
         }
 

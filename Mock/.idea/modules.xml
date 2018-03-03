@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/CalculatingMachine/CalculatingMachine.iml" filepath="$PROJECT_DIR$/CalculatingMachine/CalculatingMachine.iml" />
       <module fileurl="file://$PROJECT_DIR$/FindMaxSort/FindMaxSort.iml" filepath="$PROJECT_DIR$/FindMaxSort/FindMaxSort.iml" />
       <module fileurl="file://$PROJECT_DIR$/Fuzzer/Fuzzer.iml" filepath="$PROJECT_DIR$/Fuzzer/Fuzzer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/JMock.iml" filepath="$PROJECT_DIR$/JMock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mock.iml" filepath="$PROJECT_DIR$/Mock.iml" />
       <module fileurl="file://$PROJECT_DIR$/Selenium/Selenium.iml" filepath="$PROJECT_DIR$/Selenium/Selenium.iml" />
     </modules>
   </component>

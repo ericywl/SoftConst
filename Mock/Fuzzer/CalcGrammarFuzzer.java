@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Grammar
  * <p>
@@ -10,7 +12,8 @@
  */
 public class CalcGrammarFuzzer {
     private static int count;
-    private static int limit = 28000;
+    private static int limit = 20000;
+    private static Random random = new Random();
 
     public static String fuzz() {
         count = 0;
@@ -24,17 +27,17 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genExpression() {
-        int randNum = RandomRange.randomWithRange(1, 3);
-        if (count > limit) randNum = 3;
+        int randNum = random.nextInt(3);
+        if (count > limit) randNum = 2;
 
         switch (randNum) {
-            case 1:
+            case 0:
                 count += 2;
                 return genExpression() + " + " + genTerm();
-            case 2:
+            case 1:
                 count += 2;
                 return genExpression() + " - " + genTerm();
-            case 3:
+            case 2:
                 count++;
                 return genTerm();
             default:
@@ -43,17 +46,17 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genTerm() {
-        int randNum = RandomRange.randomWithRange(1, 3);
-        if (count > limit) randNum = 3;
+        int randNum = random.nextInt(3);
+        if (count > limit) randNum = 2;
 
         switch (randNum) {
-            case 1:
+            case 0:
                 count += 2;
                 return genTerm() + " * " + genFactor();
-            case 2:
+            case 1:
                 count += 2;
                 return genTerm() + " / " + genFactor();
-            case 3:
+            case 2:
                 count++;
                 return genFactor();
             default:
@@ -62,20 +65,20 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genFactor() {
-        int randNum = RandomRange.randomWithRange(1, 4);
-        if (count > limit) randNum = 4;
+        int randNum = random.nextInt(4);
+        if (count > limit) randNum = 3;
 
         switch (randNum) {
-            case 1:
+            case 0:
                 count++;
                 return "-" + genInteger();
-            case 2:
+            case 1:
                 count++;
                 return "(" + genExpression() + ")";
-            case 3:
+            case 2:
                 count += 2;
                 return genInteger() + "." + genInteger();
-            case 4:
+            case 3:
                 count++;
                 return genInteger();
             default:
@@ -85,14 +88,14 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genInteger() {
-        int randNum = RandomRange.randomWithRange(1, 2);
-        if (count > limit) randNum = 1;
+        int randNum = random.nextInt(2);
+        if (count > limit) randNum = 0;
 
         switch (randNum) {
-            case 1:
+            case 0:
                 count++;
                 return genDigit();
-            case 2:
+            case 1:
                 count += 2;
                 return genInteger() + genDigit();
             default:
@@ -101,7 +104,7 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genDigit() {
-        int randNum = RandomRange.randomWithRange(0, 9);
+        int randNum = random.nextInt(10);
         return String.valueOf(randNum);
     }
 
