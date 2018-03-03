@@ -24,7 +24,7 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genExpression() {
-        int randNum = randomWithRange(1, 3);
+        int randNum = RandomRange.randomWithRange(1, 3);
         if (count > limit) randNum = 3;
 
         switch (randNum) {
@@ -43,7 +43,7 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genTerm() {
-        int randNum = randomWithRange(1, 3);
+        int randNum = RandomRange.randomWithRange(1, 3);
         if (count > limit) randNum = 3;
 
         switch (randNum) {
@@ -62,7 +62,7 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genFactor() {
-        int randNum = randomWithRange(1, 4);
+        int randNum = RandomRange.randomWithRange(1, 4);
         if (count > limit) randNum = 4;
 
         switch (randNum) {
@@ -85,7 +85,7 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genInteger() {
-        int randNum = randomWithRange(1, 2);
+        int randNum = RandomRange.randomWithRange(1, 2);
         if (count > limit) randNum = 1;
 
         switch (randNum) {
@@ -101,17 +101,8 @@ public class CalcGrammarFuzzer {
     }
 
     private static String genDigit() {
-        int randNum = randomWithRange(0, 9);
+        int randNum = RandomRange.randomWithRange(0, 9);
         return String.valueOf(randNum);
-    }
-
-    private static int randomWithRange(int min, int max) {
-        if (min > max) {
-            throw new IllegalArgumentException("Min cannot be greater than max.");
-        }
-
-        int range = max - min + 1;
-        return (int) (Math.random() * range) + min;
     }
 
     public static void main(String[] args) {
