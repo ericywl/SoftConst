@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrokenLinkFinder {
-
     // this is a function which checks whether a given hyper link in a web page is broken
     public static void brokenLinkChecker(URL hyperLink) throws Exception {
         //hyperLink = new URL("https://sudiptac.bitbucket.io");

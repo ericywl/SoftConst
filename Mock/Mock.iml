@@ -18,7 +18,5 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="jmock-2.6" level="project" />
-    <orderEntry type="library" name="selenium-java-3" level="project" />
-    <orderEntry type="library" name="selenium-server-standalone-3.9.1" level="project" />
   </component>
 </module>

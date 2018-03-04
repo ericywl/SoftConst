@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/Fuzzer/Fuzzer.iml" filepath="$PROJECT_DIR$/Fuzzer/Fuzzer.iml" />
       <module fileurl="file://$PROJECT_DIR$/Mock.iml" filepath="$PROJECT_DIR$/Mock.iml" />
       <module fileurl="file://$PROJECT_DIR$/Selenium/Selenium.iml" filepath="$PROJECT_DIR$/Selenium/Selenium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SeleniumExercise/SeleniumExercise.iml" filepath="$PROJECT_DIR$/SeleniumExercise/SeleniumExercise.iml" />
     </modules>
   </component>
 </project>
