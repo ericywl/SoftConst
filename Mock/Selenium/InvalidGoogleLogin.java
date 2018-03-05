@@ -9,11 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Random;
 
 public class InvalidGoogleLogin {
-    static String myUserName = "###sudiptaonline";
+    static String driverPath = "/Users/sudiptac/sudiptac/teaching/SUTD/50.003@2018/Test/geckodriver";
+    static String myUserName = "sudiptaonline@gmail.com";
     static String myPassword = "thisisnotmypassword";
 
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver", "/Users/ericyap/Desktop/geckodriver");
+        System.setProperty("webdriver.gecko.driver", driverPath);
 
         WebDriver driver = new FirefoxDriver();
         driver.get("https://accounts.google.com/" +
@@ -24,7 +25,7 @@ public class InvalidGoogleLogin {
         String[] usernameArr = genArrayOfUserNames(20, 20);
 
         // last string is myUserName
-        for (String u: usernameArr) {
+        for (String u : usernameArr) {
             username.clear();
             username.sendKeys(u);
             nextBtn.click();

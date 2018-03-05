@@ -4,11 +4,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class OrderBotExtended {
+    static String driverPath = "/Users/sudiptac/sudiptac/teaching/SUTD/50.003@2018/Test/chromedriver";
     static String myUserName = "sudiptacasual@gmail.com";
     static String myPassword = "thisisnotmypassword";
 
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver", "/Users/ericyap/Desktop/geckodriver");
+        System.setProperty("webdriver.gecko.driver", driverPath);
 
         WebDriver driver = new FirefoxDriver();
         driver.get("https://deliveroo.com.sg/login");
@@ -29,7 +30,7 @@ public class OrderBotExtended {
             e.printStackTrace();
         }
 
-        driver.get("https://deliveroo.com.sg");
+        // driver.get("https://deliveroo.com.sg");
         // get postcode field and send 485999
         WebElement postcode = driver.findElement(By.id("postcode"));
         postcode.sendKeys("485999");

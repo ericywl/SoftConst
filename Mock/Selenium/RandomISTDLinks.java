@@ -19,7 +19,7 @@ public class RandomISTDLinks {
             return;
         }
 
-        String driverPath = "/Users/sudiptac/sudiptac/teaching/SUTD/50.003@2018/Test/chromedriver";
+        String driverPath = "/Users/sudiptac/sudiptac/teaching/SUTD/50.003@2018/Test/geckodriver";
         if (args.length == 1) {
             driverPath = args[0];
         }

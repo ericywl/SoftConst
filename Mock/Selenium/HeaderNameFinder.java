@@ -10,7 +10,25 @@ import java.util.List;
 
 public class HeaderNameFinder {
     public static void main(String[] args) throws InterruptedException {
-        String siteUrl = "https://www.google.com.sg";
+        if (args.length > 2) {
+            System.out.println("Only a maximum of 2 arguments allowed.");
+            return;
+        }
+
+        if (args.length == 0) {
+            System.out.println("At least one argument for website required.");
+            return;
+        }
+
+        // set driver path
+        String driverPath = "/Users/sudiptac/sudiptac/teaching/SUTD/50.003@2018/Test/chromedriver";
+        if (args.length == 2) {
+            driverPath = args[1];
+        }
+
+        System.setProperty("webdriver.gecko.driver", driverPath);
+
+        String siteUrl = args[0];
         List<String> linksWithEmptyTitlesHref = getEmptyTitleLinks(siteUrl);
         if (linksWithEmptyTitlesHref.isEmpty()) {
             System.out.println("\nAll webpages directly reachable from "
@@ -19,6 +37,7 @@ public class HeaderNameFinder {
             System.out.println("\nThe webpages directly reachable from "
                     + siteUrl + " listed below do not have titles.");
 
+            // print out all links with empty title
             for (int i = 0; i < linksWithEmptyTitlesHref.size(); i++) {
                 System.out.println(i + ". " + linksWithEmptyTitlesHref.get(i));
             }
@@ -26,8 +45,8 @@ public class HeaderNameFinder {
 
     }
 
+    // get links that have empty title
     private static List<String> getEmptyTitleLinks(String siteUrl) throws InterruptedException {
-        System.setProperty("webdriver.gecko.driver", "/Users/ericyap/Desktop/geckodriver");
         WebDriver driver = new FirefoxDriver();
         driver.get(siteUrl);
 
@@ -41,6 +60,7 @@ public class HeaderNameFinder {
             linksHref.add(links.get(i).getAttribute("href"));
         }
 
+        // go through all links in page
         for (String aLinksHref : linksHref) {
             if (aLinksHref == null || !aLinksHref.substring(0, 4).equals("http"))
                 continue;
@@ -50,6 +70,7 @@ public class HeaderNameFinder {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("html")));
 
+            // check if title is empty
             if (driver.getTitle() == null || driver.getTitle().isEmpty())
                 linksWithEmptyTitlesHref.add(aLinksHref);
         }
