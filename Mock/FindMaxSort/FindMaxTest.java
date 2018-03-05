@@ -23,4 +23,8 @@ public class FindMaxTest {
         FindMaxUsingSorting.findMax(arr, sorter);
         context.assertIsSatisfied();
     }
+
+    public static void main(String[] args) {
+        org.junit.runner.JUnitCore.main("FindMaxTest");
+    }
 }

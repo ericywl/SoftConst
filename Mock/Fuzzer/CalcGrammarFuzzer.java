@@ -109,6 +109,7 @@ public class CalcGrammarFuzzer {
     }
 
     public static void main(String[] args) {
-        System.out.println(CalcGrammarFuzzer.fuzz());
+        System.out.println("Generating based on grammar...");
+        System.out.println("Result: " + CalcGrammarFuzzer.fuzz());
     }
 }

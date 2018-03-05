@@ -18,6 +18,7 @@ public class AlphaNumFuzzer {
     }
 
     public static void main(String[] args) {
-        System.out.println(AlphaNumFuzzer.fuzz());
+        System.out.println("Generating random alpha-numeric...");
+        System.out.println("Result: " + AlphaNumFuzzer.fuzz());
     }
 }

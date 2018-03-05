@@ -12,9 +12,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.Random;
 
-public class FindAndClickRandomLink {
+public class RandomISTDLinks {
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver", "/Users/ericyap/Desktop/geckodriver");
+        if (args.length > 1) {
+            System.out.println("Only 1 driver path argument allowed.");
+            return;
+        }
+
+        String driverPath = "/Users/sudiptac/sudiptac/teaching/SUTD/50.003@2018/Test/chromedriver";
+        if (args.length == 1) {
+            driverPath = args[0];
+        }
+
+        System.setProperty("webdriver.gecko.driver", driverPath);
         WebDriver driver = new FirefoxDriver();
 
         driver.get("https://istd.sutd.edu.sg/");
@@ -24,7 +34,6 @@ public class FindAndClickRandomLink {
         driver.manage().window().maximize();
 
         while (true) {
-
             int linkIndex = new Random().nextInt(links.size());
             String linkHref = links.get(linkIndex).getAttribute("href");
             if (linkHref == null || !linkHref.substring(0, 4).equals("http"))
@@ -37,6 +46,7 @@ public class FindAndClickRandomLink {
                     driver.navigate().to(links.get(linkIndex).getAttribute("href"));
                     WebDriverWait wait = new WebDriverWait(driver, 10);
                     wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("html")));
+                    Thread.sleep(1000);
 
                     driver.navigate().back();
                     links = driver.findElements(By.tagName("a"));
@@ -46,6 +56,8 @@ public class FindAndClickRandomLink {
                     staleElementLoaded = false;
                 } catch (StaleElementReferenceException ex) {
                     staleElementLoaded = true;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }

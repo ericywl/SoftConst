@@ -3,6 +3,20 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 public class GeneralFuzzer {
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("One pathname argument required.");
+            return;
+        }
+
+        String filePathName = args[0];
+        try {
+            GeneralFuzzer.fuzz(filePathName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void fuzz(String filePath) throws IOException {
         File readFile = new File(filePath);
         BufferedReader br = new BufferedReader(new FileReader(readFile));
@@ -16,6 +30,7 @@ public class GeneralFuzzer {
                 continue;
             }
 
+            // choose fuzzing method from the currently available
             int fuzzMethod = new Random().nextInt(3);
             String resultLine;
             switch (fuzzMethod) {
@@ -51,30 +66,6 @@ public class GeneralFuzzer {
         absFilePathArr[aLen - 1] = writeFileName;
 
         return String.join(File.separator, absFilePathArr);
-    }
-
-    public static void main(String[] args) {
-        try {
-            GeneralFuzzer.fuzz("sample-fuzzer\\simple-fuzzer.c");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-
-class MutationSwapFuzzer {
-    static String fuzz(String input) {
-        int inputLen = input.length();
-        if (inputLen == 1)
-            return input;
-
-        int swapIndex = new Random().nextInt(inputLen - 1);
-        String[] inputArr = input.split("");
-        String temp = inputArr[swapIndex];
-        inputArr[swapIndex] = inputArr[swapIndex + 1];
-        inputArr[swapIndex + 1] = temp;
-
-        return String.join("", inputArr);
     }
 }
 
