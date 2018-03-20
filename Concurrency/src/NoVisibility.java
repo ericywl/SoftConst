@@ -1,4 +1,4 @@
-public class NoVisiability {
+public class NoVisibility {
 	//private static volatile boolean ready;
 	private static boolean ready;	
 	private static int number;

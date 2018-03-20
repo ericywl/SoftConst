@@ -1,50 +1,31 @@
 import java.math.BigInteger;
 
-public class FactorThread {
+public class FactorPrimeMultiThreadNoInterrupt {
     public static final int numberOfThreads = 4;
 
     public static void main(String[] args) throws Exception {
         BigInteger n = new BigInteger("1127451830576035879");
-        System.out.println("Got it: " + factorMultiThread(n));
-    }
-
-    // Pre-condition: n is a semi-prime number.
-    // Post-condition: the returned value is a prime factor of n;
-    private static BigInteger factorMultiThread(BigInteger input) throws InterruptedException {
         FactorNoInterrupt[] factors = new FactorNoInterrupt[numberOfThreads];
-        BigInteger result = null;
 
         for (int i = 0; i < numberOfThreads; i++) {
-            factors[i] = new FactorNoInterrupt(input, i + 2, numberOfThreads);
+            factors[i] = new FactorNoInterrupt(n, i + 2, numberOfThreads);
             factors[i].start();
-        }
-
-        while (result == null) {
-            for (FactorNoInterrupt ft : factors) {
-                if (ft.getResult() != null) {
-                    result = ft.getResult();
-                    for (int i = 0; i < numberOfThreads; i++) {
-                        factors[i].interrupt();
-                    }
-                }
-            }
         }
 
         for (FactorNoInterrupt ft : factors) {
             ft.join();
         }
 
-        return result;
     }
 }
 
-class FactorInterrupt extends Thread {
+class FactorNoInterrupt extends Thread {
     private BigInteger n;
     private BigInteger init;
     private BigInteger stepSize;
     private BigInteger result = null;
 
-    FactorInterrupt(BigInteger n, int init, int stepSize) {
+    FactorNoInterrupt(BigInteger n, int init, int stepSize) {
         this.n = n;
         this.init = BigInteger.valueOf(init);
         this.stepSize = BigInteger.valueOf(stepSize);
@@ -54,12 +35,9 @@ class FactorInterrupt extends Thread {
         BigInteger zero = new BigInteger("0");
 
         while (init.compareTo(n) < 0) {
-            if (this.isInterrupted()) {
-                return;
-            }
-
             if (n.remainder(init).compareTo(zero) == 0) {
                 result = init;
+                System.out.println("Got it: " + result);
                 break;
             }
 
