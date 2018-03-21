@@ -19,6 +19,10 @@ class Taxi {
             dispatcher.notifyAvailable(this);
     }
 
+    public synchronized void setDestination(Point destination) {
+        this.destination = destination;
+    }
+
     public synchronized Point getDestination() {
         return destination;
     }
@@ -56,6 +60,5 @@ class Image {
 }
 
 class Point {
-	
 }
 
