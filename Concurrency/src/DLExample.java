@@ -1,7 +1,6 @@
 import java.util.HashSet;
 import java.util.Set;
 
-
 class Taxi {
     private Point location, destination;
     private final Dispatcher dispatcher;
@@ -30,8 +29,8 @@ class Dispatcher {
     private final Set<Taxi> availableTaxis;
 
     public Dispatcher() {
-        taxis = new HashSet<Taxi>();
-        availableTaxis = new HashSet<Taxi>();
+        taxis = new HashSet<>();
+        availableTaxis = new HashSet<>();
     }
 
     public synchronized void addTaxi(Taxi taxi) {
@@ -46,6 +45,7 @@ class Dispatcher {
         Image image = new Image();
         for (Taxi t : taxis)
             image.drawMarker(t.getLocation());
+
         return image;
     }
 }

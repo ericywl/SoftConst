@@ -1,7 +1,8 @@
 import java.math.BigInteger;
 
-public class FactorThread {
+public class FactorThreadVisible {
     public static final int numberOfThreads = 4;
+    private static volatile boolean isFound = false;
 
     public static void main(String[] args) throws Exception {
         BigInteger n = new BigInteger("1127451830576035879");
@@ -19,10 +20,11 @@ public class FactorThread {
             factors[i].start();
         }
 
-        while (result == null) {
+        while (!isFound) {
             for (FactorInterrupt ft : factors) {
                 if (ft.getResult() != null) {
                     result = ft.getResult();
+                    isFound = true;
                     for (int i = 0; i < numberOfThreads; i++) {
                         factors[i].interrupt();
                     }
@@ -36,38 +38,44 @@ public class FactorThread {
 
         return result;
     }
-}
 
-class FactorInterrupt extends Thread {
-    private BigInteger n;
-    private BigInteger init;
-    private BigInteger stepSize;
-    private BigInteger result = null;
+    private static class FactorInterrupt extends Thread {
+        private BigInteger n;
+        private BigInteger init;
+        private BigInteger stepSize;
+        private BigInteger result = null;
 
-    FactorInterrupt(BigInteger n, int init, int stepSize) {
-        this.n = n;
-        this.init = BigInteger.valueOf(init);
-        this.stepSize = BigInteger.valueOf(stepSize);
-    }
+        FactorInterrupt(BigInteger n, int init, int stepSize) {
+            this.n = n;
+            this.init = BigInteger.valueOf(init);
+            this.stepSize = BigInteger.valueOf(stepSize);
+        }
 
-    public void run() {
-        BigInteger zero = new BigInteger("0");
+        public void run() {
+            BigInteger zero = new BigInteger("0");
 
-        while (init.compareTo(n) < 0) {
-            if (this.isInterrupted()) {
-                return;
+            while (init.compareTo(n) < 0) {
+                while (isFound) {
+                    Thread.yield();
+                }
+
+                if (this.isInterrupted()) {
+                    return;
+                }
+
+                if (n.remainder(init).compareTo(zero) == 0) {
+                    result = init;
+                    break;
+                }
+
+                init = init.add(stepSize);
             }
+        }
 
-            if (n.remainder(init).compareTo(zero) == 0) {
-                result = init;
-                break;
-            }
-
-            init = init.add(stepSize);
+        public BigInteger getResult() {
+            return result;
         }
     }
-
-    public BigInteger getResult() {
-        return result;
-    }
 }
+
+

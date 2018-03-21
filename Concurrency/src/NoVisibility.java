@@ -1,6 +1,6 @@
 public class NoVisibility {
-	//private static volatile boolean ready;
-	private static boolean ready;	
+	// private static volatile boolean ready;
+	private static boolean ready;
 	private static int number;
 
 	private static class ReaderThread extends Thread {
@@ -10,7 +10,7 @@ public class NoVisibility {
 			}
 			
 			System.out.println(number);
-			//Question: what will be printed here?
+			// Question: what will be printed here?
 		}
 	}
 	
