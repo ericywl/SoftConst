@@ -1,14 +1,13 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SecondError {
-	//public static int amount = 5000;
 	public static AtomicInteger amount = new AtomicInteger(5000);
 	
 	public static void main(String args[]){   	
-		int numberofThreads = 10000;
-		Withdrawer[] threads = new Withdrawer[numberofThreads];
+		int numOfThreads = 10000;
+		Withdrawer[] threads = new Withdrawer[numOfThreads];
 	
-		for (int i = 0; i < numberofThreads; i++) {
+		for (int i = 0; i < numOfThreads; i++) {
 			threads[i] = new Withdrawer();
 			threads[i].start();
 		}
@@ -16,12 +15,12 @@ public class SecondError {
 		int totalWithdraw = 0;
 		
 		try {
-			for (int i = 0; i < numberofThreads; i++) {
+			for (int i = 0; i < numOfThreads; i++) {
 				threads[i].join();
 				totalWithdraw += threads[i].getResult();
 			}
 		} catch (InterruptedException e) {
-			System.out.println("some thread is not finished");
+			System.out.println("Some thread has not finished");
 		}
 		
 		System.out.print("The result is ... ");
@@ -31,7 +30,7 @@ public class SecondError {
 }
 
 class Withdrawer extends Thread {
-	int whatIGot = 0;
+	private int whatIGot = 0;
 	
 	public void run () {
 		/*if (SecondBlood.amount >= 1000) {

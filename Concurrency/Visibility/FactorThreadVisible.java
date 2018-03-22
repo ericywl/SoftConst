@@ -24,15 +24,12 @@ public class FactorThreadVisible {
             for (FactorInterrupt ft : factors) {
                 if (ft.getResult() != null) {
                     result = ft.getResult();
-                    isFound = true;
-                    for (int i = 0; i < numberOfThreads; i++) {
-                        factors[i].interrupt();
-                    }
                 }
             }
         }
 
         for (FactorInterrupt ft : factors) {
+            ft.interrupt();
             ft.join();
         }
 
@@ -55,16 +52,13 @@ public class FactorThreadVisible {
             BigInteger zero = new BigInteger("0");
 
             while (init.compareTo(n) < 0) {
-                while (isFound) {
-                    Thread.yield();
-                }
-
                 if (this.isInterrupted()) {
                     return;
                 }
 
                 if (n.remainder(init).compareTo(zero) == 0) {
                     result = init;
+                    isFound = true;
                     break;
                 }
 

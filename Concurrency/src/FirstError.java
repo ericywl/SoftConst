@@ -1,5 +1,7 @@
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class FirstError {
-	public static int count = 0;
+	public static AtomicInteger count = new AtomicInteger(0);
 	
 	public static void main(String args[]){   	
 		int numberOfThreads = 10000;
@@ -26,7 +28,7 @@ public class FirstError {
 
 class A extends Thread {
 	public void run () {
-		FirstError.count++;
+		FirstError.count.incrementAndGet();
 	}	
 }
 
