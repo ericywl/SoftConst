@@ -4,8 +4,8 @@ import java.util.Random;
 
 class FactorizerUser {
     public static void main(String[] args) {
-        CachedFactorizer factorizer = new CachedFactorizer();
-        Thread[] threads = new Thread[10000];
+        CachedFactorizerSafe factorizer = new CachedFactorizerSafe();
+        Thread[] threads = new Thread[100];
         for (int i = 0; i < threads.length; i++) {
             threads[i] = new Thread(new MyRunnable(factorizer));
             threads[i].start();
@@ -25,9 +25,9 @@ class FactorizerUser {
 }
 
 class MyRunnable implements Runnable {
-    private CachedFactorizer factorizer;
+    private CachedFactorizerSafe factorizer;
 
-    public MyRunnable(CachedFactorizer factorizer) {
+    public MyRunnable(CachedFactorizerSafe factorizer) {
         this.factorizer = factorizer;
     }
 
@@ -38,7 +38,7 @@ class MyRunnable implements Runnable {
     }
 }
 
-public class CachedFactorizer {
+public class CachedFactorizerSafe {
     private int lastNumber;
     private List<Integer> lastFactors;
     private long hits;

@@ -3,9 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Concurrency.iml" filepath="$PROJECT_DIR$/Concurrency.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Deadlock/Deadlock.iml" filepath="$PROJECT_DIR$/Deadlock/Deadlock.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FactorPrime/FactorPrime.iml" filepath="$PROJECT_DIR$/FactorPrime/FactorPrime.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Visibility/Visibility.iml" filepath="$PROJECT_DIR$/Visibility/Visibility.iml" />
     </modules>
   </component>
 </project>

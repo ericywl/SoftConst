@@ -1,4 +1,4 @@
-public class Experiment {
+public class ExperimentFix2 {
     // private static volatile int MY_INT = 0;
     private static int MY_INT = 0;
     private static final Object lock = new Object();
