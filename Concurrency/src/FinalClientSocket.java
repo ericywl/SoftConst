@@ -19,6 +19,7 @@ public class FinalClientSocket {
             while ((line = in.readLine()) != null) {
                 String[] lineArr = line.split(" ");
                 if (lineArr[0].equalsIgnoreCase("start")) {
+                    System.out.println("Server message received...");
                     BigInteger n = BigInteger.valueOf(Long.valueOf(lineArr[1].trim()));
                     BigInteger init = BigInteger.valueOf(Long.valueOf(lineArr[2].trim()));
                     BigInteger stepSize = BigInteger.valueOf(Long.valueOf(lineArr[3].trim()));
@@ -39,8 +40,6 @@ public class FinalClientSocket {
                         init = init.add(stepSize);
                     }
 
-                } else {
-                    System.out.println(line);
                 }
             }
 

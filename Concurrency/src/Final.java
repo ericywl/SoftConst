@@ -91,9 +91,7 @@ public class Final {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                out.println("Server message incoming...");
                 out.println("start " + n + " " + init + " " + stepSize);
-
                 String line = in.readLine();
                 if (line != null) {
                     System.out.println(line);
