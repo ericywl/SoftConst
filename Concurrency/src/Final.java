@@ -48,7 +48,7 @@ public class Final {
                         // IDLE WAIT
                     }
 
-                    // Client responded, close all sockets and join the client workers
+                    // Client responded, interrupt and join the client workers
                     for (ClientWorker ct : cts) {
                         ct.interrupt();
                         ct.join();
