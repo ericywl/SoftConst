@@ -23,6 +23,7 @@ public class FinalClientSocket {
             System.out.println("Connected to server.");
             String line;
 
+            // Wait for server message
             while ((line = in.readLine()) != null) {
                 String[] lineArr = line.trim().split(" ");
                 if (lineArr[0].equalsIgnoreCase("start")) {
@@ -44,6 +45,7 @@ public class FinalClientSocket {
 
                     String newLine;
                     while (!isFound) {
+                        // Asked to stop by the server
                         newLine = in.readLine();
                         if (newLine == null || newLine.equalsIgnoreCase("stop")) {
                             System.out.println("Interrupted by server.");
@@ -52,6 +54,7 @@ public class FinalClientSocket {
                             break;
                         }
 
+                        // "Ping" back to the server
                         synchronized (outLock) {
                             out.println("im alive");
                             out.flush();

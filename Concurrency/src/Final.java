@@ -4,8 +4,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * FinalClientSocket is needed to run this properly
+ * FinalClientSocket is needed to demo this properly
+ *
  * Run this server class first before running FinalClientSocket
+ * or else the client cannot connect
  */
 public class Final {
     /* Number of connections required before the server can input number for computation
@@ -43,7 +45,7 @@ public class Final {
                     // Wait for any client to respond
                     System.out.println("Awaiting client response...");
                     while (!isFound) {
-                        // idle wait
+                        // IDLE WAIT
                     }
 
                     // Client responded, close all sockets and join the client workers
@@ -93,10 +95,6 @@ public class Final {
             this.start();
         }
 
-        public Socket getSocket() {
-            return socket;
-        }
-
         @Override
         public void run() {
             try {
@@ -107,12 +105,14 @@ public class Final {
                 String line;
                 String[] lineArr;
                 while ((line = in.readLine()) != null) {
+                    // Tell the client to stop computation
                     if (this.isInterrupted()) {
                         out.println("stop");
                         out.flush();
                         break;
                     }
 
+                    // A result has been found by the client
                     lineArr = line.trim().split(" ");
                     if (lineArr[0].equalsIgnoreCase("result")) {
                         isFound = true;
@@ -120,6 +120,7 @@ public class Final {
                         break;
                     }
 
+                    // "Ping" the client
                     out.println("pulse check");
                     out.flush();
                 }
