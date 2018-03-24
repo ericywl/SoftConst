@@ -27,14 +27,13 @@ public class Final {
                 index++;
             }
             System.out.println("Finished establishing all " + numOfSockets + " connections.");
-            System.out.println();
 
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
             String inputLine = null;
 
-            // Gets input from user and sends input to the clients
+            // Gets input from user and sends that input to the clients
             while (inputLine == null) {
-                System.out.print("Enter a semi-prime number: ");
+                System.out.print("\nEnter a semi-prime number: ");
                 inputLine = stdIn.readLine();
                 if (inputLine != null && checkLong(inputLine)) {
                     for (ClientWorker ct : cts) {
@@ -49,7 +48,7 @@ public class Final {
 
                     // Client responded, close all sockets and join the client workers
                     for (ClientWorker ct : cts) {
-                        ct.getSocket().close();
+                        ct.interrupt();
                         ct.join();
                     }
 
@@ -77,6 +76,8 @@ public class Final {
 
     private static class ClientWorker extends Thread {
         private Socket socket;
+        private PrintWriter out;
+        private BufferedReader in;
         private BigInteger n;
         private BigInteger init;
         private BigInteger stepSize;
@@ -99,18 +100,36 @@ public class Final {
         @Override
         public void run() {
             try {
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
+                out = new PrintWriter(socket.getOutputStream(), true);
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out.println("start " + n + " " + init + " " + stepSize);
-                String line = in.readLine();
-                if (line != null) {
-                    System.out.println(line);
-                    isFound = true;
+
+                String line;
+                String[] lineArr;
+                while ((line = in.readLine()) != null) {
+                    if (this.isInterrupted()) {
+                        out.println("stop");
+                        out.flush();
+                        break;
+                    }
+
+                    lineArr = line.trim().split(" ");
+                    if (lineArr[0].equalsIgnoreCase("result")) {
+                        isFound = true;
+                        System.out.println("Got it: " + lineArr[1]);
+                        break;
+                    }
+
+                    out.println("pulse check");
+                    out.flush();
                 }
 
-            } catch (IOException ignored) {
+                in.close();
+                out.close();
+                socket.close();
 
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
