@@ -1,37 +1,51 @@
+import java.util.HashMap;
 import java.util.Map;
 
-class test extends Thread {
-	Tracker tracker;
+class TestTracker extends Thread {
+	private Tracker tracker;
 	
-	public test (Tracker tra) {
-		this.tracker = tra;
+	public TestTracker(Tracker tracker) {
+		this.tracker = tracker;
 	}
 	
 	public void run () {
-		Week8.Tracker.MutablePoint loc = tracker.getLocation("somestring");
+		MutablePoint loc = tracker.getLocation("somestring");
 		loc.x = -1212000;
 	}
+
+    public static void main(String[] args) {
+	    Map<String, MutablePoint> map = new HashMap<>();
+	    map.put("somestring", new MutablePoint(1, 2));
+	    Tracker tracker = new Tracker(map);
+        TestTracker test = new TestTracker(tracker);
+
+        test.run();
+        try {
+            test.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        MutablePoint loc = tracker.getLocation("somestring");
+        System.out.println(loc.x);
+    }
 }
 
-//is this class thread-safe?
 public class Tracker {
-	//@guarded by ???
+	// @guarded by this
 	private final Map<String, MutablePoint> locations;
 	
-	//the reference locations, is it going to be an escape?
 	public Tracker(Map<String, MutablePoint> locations) {
-		this.locations = locations;
+        this.locations = DeepCopy.deepCopyMap(locations);
 	}
 	
-	//is this an escape?
-	public Map<String, MutablePoint> getLocations () {
-		return locations;
+	public synchronized Map<String, MutablePoint> getLocations () {
+        return DeepCopy.deepCopyMap(locations);
 	}
-	
-	//is this an escape?
-	public MutablePoint getLocation (String id) {
-		MutablePoint loc = locations.get(id);
-		return loc;
+
+	public synchronized MutablePoint getLocation (String id) {
+		MutablePoint location = locations.get(id);
+		return new MutablePoint(location);
 	}
 	
 	public void setLocation (String id, int x, int y) {
@@ -44,19 +58,32 @@ public class Tracker {
 		loc.x = x;
 		loc.y = y;
 	}
-	
-	//this class is not thread-safe (why?) and keep it unmodified.
-	class MutablePoint {
-		public int x, y;
 
-		public MutablePoint (int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
-		
-		public MutablePoint (MutablePoint p) {
-			this.x = p.x;
-			this.y = p.y;
-		}
-	}
+	static class DeepCopy {
+	    static Map<String, MutablePoint> deepCopyMap(Map<String, MutablePoint> oldMap) {
+	        Map<String, MutablePoint> newMap = new HashMap<>();
+            for (String str : oldMap.keySet()) {
+                MutablePoint location = oldMap.get(str);
+                MutablePoint newLocation = new MutablePoint(location);
+                newMap.putIfAbsent(str, newLocation);
+            }
+
+            return newMap;
+        }
+    }
+}
+
+// this class is not thread-safe (why?) and keep it unmodified.
+class MutablePoint {
+    public int x, y;
+
+    public MutablePoint (int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public MutablePoint (MutablePoint p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
 }

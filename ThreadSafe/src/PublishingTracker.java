@@ -4,16 +4,16 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap; //this is thread-safe!
 import java.util.concurrent.ConcurrentMap; //this is thread-safe!
 
-//is this class thread-safe?
+// is this class thread-safe?
 public class PublishingTracker {
 	private final ConcurrentMap<String, Point> locations;
 	
 	public PublishingTracker(Map<String, Point> locations) {
-		this.locations = new ConcurrentHashMap<String, Point>(locations);
+		this.locations = new ConcurrentHashMap<>(locations);
 	}
 	
 	public synchronized Map<String, Point> getLocations () {
-		return Collections.unmodifiableMap(new HashMap<String, Point>(locations));
+		return Collections.unmodifiableMap(new HashMap<>(locations));
 	}
 	
 	public synchronized Point getLocation (String id) {
@@ -26,7 +26,7 @@ public class PublishingTracker {
 		}
 	}
 	
-	//is this class not thread-safe?
+	// is this class not thread-safe?
 	class Point {
 		public final int x, y;
 		
