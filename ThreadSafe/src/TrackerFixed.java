@@ -2,9 +2,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 class TestTracker extends Thread {
-	private Tracker tracker;
+	private TrackerFixed tracker;
 	
-	public TestTracker(Tracker tracker) {
+	public TestTracker(TrackerFixed tracker) {
 		this.tracker = tracker;
 	}
 	
@@ -13,10 +13,11 @@ class TestTracker extends Thread {
 		loc.x = -1212000;
 	}
 
+	// test that the point is not mutated
     public static void main(String[] args) {
 	    Map<String, MutablePoint> map = new HashMap<>();
 	    map.put("somestring", new MutablePoint(1, 2));
-	    Tracker tracker = new Tracker(map);
+	    TrackerFixed tracker = new TrackerFixed(map);
         TestTracker test = new TestTracker(tracker);
 
         test.run();
@@ -31,11 +32,11 @@ class TestTracker extends Thread {
     }
 }
 
-public class Tracker {
+public class TrackerFixed {
 	// @guarded by this
 	private final Map<String, MutablePoint> locations;
 	
-	public Tracker(Map<String, MutablePoint> locations) {
+	public TrackerFixed(Map<String, MutablePoint> locations) {
         this.locations = DeepCopy.deepCopyMap(locations);
 	}
 	

@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class DiningPhilOrdered {
+public class DiningPhilFixed1 {
     private static int numOfPhils = 5;
 
     public static void main(String[] args) {
@@ -30,6 +30,7 @@ class PhilosopherOrdered extends Thread {
     }
 
     public void run() {
+        // impose an order, take only the lower index fork
         boolean orderCheck = left.getIndex() < right.getIndex();
         ForkOrdered first = orderCheck ? left : right;
         String firstStr = orderCheck ? "left" : "right";
@@ -38,10 +39,11 @@ class PhilosopherOrdered extends Thread {
         Random randomGenerator = new Random();
         try {
             while (true) {
-                Thread.sleep(randomGenerator.nextInt(1000)); // not sleeping but thinking
+                // Thread.sleep(randomGenerator.nextInt(1000)); // not sleeping but thinking
                 System.out.println("Phil " + index + " finishes thinking.");
                 first.pickUp();
                 System.out.println("Phil " + index + " picks up " + firstStr + " fork.");
+                Thread.sleep(1000);
                 second.pickUp();
                 System.out.println("Phil " + index + " picks up " + secondStr + " fork.");
 
@@ -91,9 +93,9 @@ class ForkOrdered {
 
     public String toString() {
         if (isAvailable) {
-            return "ForkOrdered " + index + " is available.";
+            return "Fork " + index + " is available.";
         } else {
-            return "ForkOrdered " + index + " is NOT available.";
+            return "Fork " + index + " is NOT available.";
         }
     }
 }
