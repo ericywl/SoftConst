@@ -1,9 +1,9 @@
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class SynchronizedAccount {
-    private final ReentrantLock lock = new ReentrantLock();
+    private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
     private AtomicInteger balance;
 
     SynchronizedAccount() {
@@ -15,30 +15,58 @@ public class SynchronizedAccount {
     }
 
     public void deposit(Integer amount) {
-        synchronized (lock) {
+        if (amount <= 0) {
+            System.out.println("Invalid amount.");
+            return;
+        }
+
+        lock.writeLock().lock();
+        try {
             balance.getAndAdd(amount);
-            System.out.println("Deposited: " + amount);
+            System.out.println("Successfully deposited $" + amount + ".");
+
+        } finally {
+            lock.writeLock().unlock();
         }
     }
 
     public boolean withdraw(Integer amount) {
-        synchronized (lock) {
-            if (balance.get() < amount) {
-                System.out.println("Insufficient balance.");
-                return false;
-            }
-
-            balance.getAndAdd(-amount);
-            System.out.println("Withdrew: " + amount);
+        if (amount <= 0) {
+            System.out.println("Invalid amount.");
+            return false;
         }
 
-        return true;
+        boolean success;
+        lock.writeLock().lock();
+        try {
+            if (balance.get() < amount) {
+                System.out.println("Failed to withdraw $" + amount + ", insufficient balance.");
+                success = false;
+            } else {
+                balance.getAndAdd(-amount);
+                System.out.println("Successfully withdrawn $" + amount + ".");
+                success = true;
+            }
+
+        } finally {
+            lock.writeLock().unlock();
+        }
+
+        return success;
     }
 
     public Integer checkBalance() {
-        Integer temp = balance.get();
-        System.out.println("Current balance: " + temp);
-        return temp;
+        Integer result;
+        lock.readLock().lock();
+        try {
+            result = balance.get();
+            System.out.println("Current balance: $" + result);
+
+        } finally {
+            lock.readLock().unlock();
+        }
+
+        return result;
     }
 }
 
@@ -53,8 +81,8 @@ class TestAccount {
         Thread[] checkBalanceThreads = new Thread[numOfThreads];
 
         for (int i = 0; i < numOfThreads; i++) {
-            depositThreads[i] = new Thread(() -> account.deposit(100));
-            withdrawThreads[i] = new Thread(() -> account.withdraw(100));
+            depositThreads[i] = new Thread(() -> account.deposit(random.nextInt(100)));
+            withdrawThreads[i] = new Thread(() -> account.withdraw(random.nextInt(100)));
             checkBalanceThreads[i] = new Thread(account::checkBalance);
         }
 
