@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cee2744c-f2ef-4f69-9ea4-119c1963ff0f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/CacheV3.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/DiningPhilFixed2.java" />
-      <change beforePath="$PROJECT_DIR$/src/BetterVector.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/BufferExample.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Cache.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/CacheV1.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/CacheV2.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/DLExampleFixed.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/DelegatingTracker.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/DiningPhil.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/DiningPhilOrdered.java" afterPath="$PROJECT_DIR$/src/DiningPhilFixed1.java" />
-      <change beforePath="$PROJECT_DIR$/src/ExtendedPair.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/ExtendedPairWrong.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/FirstExample.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/FutureTaskExample.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/FutureTaskExample2.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/GDesktopProb.java" afterPath="$PROJECT_DIR$/src/GDesktop.java" />
-      <change beforePath="$PROJECT_DIR$/src/ImprovedList.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/ListHelper.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/MyList.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/MyStack.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/PersonSet.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/PublishingTracker.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Range.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/SafeStack.java" afterPath="$PROJECT_DIR$/src/SafeStack.java" />
-      <change beforePath="$PROJECT_DIR$/src/Tracker.java" afterPath="$PROJECT_DIR$/src/TrackerFixed.java" />
-      <change beforePath="$PROJECT_DIR$/src/TransferFixed.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Trylockexample.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Voting.java" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/SynchronizedAccount.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,11 +15,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CacheV3.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CacheV3.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CacheV3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="957">
-              <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+            <state relative-caret-position="528">
+              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SynchronizedAccount.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SynchronizedAccount.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="832">
+              <caret line="72" column="27" lean-forward="false" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#282#283#0" expanded="true" />
+                <element signature="e#333#334#0" expanded="true" />
+                <element signature="e#377#378#0" expanded="true" />
+                <element signature="e#434#435#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyStackThreadSafeComplete.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MyStackThreadSafeComplete.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -83,6 +82,8 @@
         <option value="$PROJECT_DIR$/src/CacheV2.java" />
         <option value="$PROJECT_DIR$/src/SafeStack.java" />
         <option value="$PROJECT_DIR$/src/CacheV3.java" />
+        <option value="$PROJECT_DIR$/src/SynchronizedAccount.kt" />
+        <option value="$PROJECT_DIR$/src/SynchronizedAccount.java" />
       </list>
     </option>
   </component>
@@ -152,41 +153,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DiningPhilFixed2">
+  <component name="RunManager" selected="Application.TestAccount">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
-    </configuration>
-    <configuration name="DiningPhil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="DiningPhil" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ThreadSafe" />
-      <envs />
-    </configuration>
-    <configuration name="DiningPhilFixed1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="DiningPhilFixed1" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ThreadSafe" />
-      <envs />
     </configuration>
     <configuration name="DiningPhilFixed2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -205,6 +178,34 @@
     <configuration name="FutureTaskExample2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="FutureTaskExample2" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ThreadSafe" />
+      <envs />
+    </configuration>
+    <configuration name="SynchronizedAccount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="SynchronizedAccount" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ThreadSafe" />
+      <envs />
+    </configuration>
+    <configuration name="TestAccount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="TestAccount" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -305,19 +306,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.DiningPhilFixed1" />
-      <item index="1" class="java.lang.String" itemvalue="Application.DiningPhil" />
-      <item index="2" class="java.lang.String" itemvalue="Application.DiningPhilFixed2" />
-      <item index="3" class="java.lang.String" itemvalue="Application.TestTracker" />
-      <item index="4" class="java.lang.String" itemvalue="Application.FutureTaskExample2" />
+      <item index="0" class="java.lang.String" itemvalue="Application.DiningPhilFixed2" />
+      <item index="1" class="java.lang.String" itemvalue="Application.TestTracker" />
+      <item index="2" class="java.lang.String" itemvalue="Application.FutureTaskExample2" />
+      <item index="3" class="java.lang.String" itemvalue="Application.SynchronizedAccount" />
+      <item index="4" class="java.lang.String" itemvalue="Application.TestAccount" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.DiningPhilFixed2" />
-        <item index="1" class="java.lang.String" itemvalue="Application.FutureTaskExample2" />
-        <item index="2" class="java.lang.String" itemvalue="Application.TestTracker" />
-        <item index="3" class="java.lang.String" itemvalue="Application.DiningPhilFixed1" />
-        <item index="4" class="java.lang.String" itemvalue="Application.DiningPhil" />
+        <item index="0" class="java.lang.String" itemvalue="Application.TestAccount" />
+        <item index="1" class="java.lang.String" itemvalue="Application.SynchronizedAccount" />
+        <item index="2" class="java.lang.String" itemvalue="Application.DiningPhilFixed2" />
+        <item index="3" class="java.lang.String" itemvalue="Application.FutureTaskExample2" />
+        <item index="4" class="java.lang.String" itemvalue="Application.TestTracker" />
       </list>
     </recent_temporary>
   </component>
@@ -334,16 +335,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522322789503</updated>
-      <workItem from="1522322793310" duration="4836000" />
+      <workItem from="1522322793310" duration="9188000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4836000" />
+    <option name="totallyTimeSpent" value="9188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2560" y="-1" width="2560" height="1402" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -351,7 +351,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -438,14 +438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyStackThreadSafeComplete.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FutureTaskExample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -523,11 +515,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyStackThreadSafeComplete.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CacheV3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="957">
-          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        <state relative-caret-position="528">
+          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SynchronizedAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="72" column="27" lean-forward="false" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
