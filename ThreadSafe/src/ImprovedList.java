@@ -8,7 +8,7 @@ public class ImprovedList<E> {
 	private final List<E> list;
 		
 	public ImprovedList () {
-		this.list = new ArrayList<E>();
+		this.list = new ArrayList<>();
 	}
 	
 	public synchronized boolean putIfAbsent(E x) {

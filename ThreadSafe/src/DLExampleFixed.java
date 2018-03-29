@@ -1,7 +1,5 @@
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class DLExampleFixed {
 
@@ -23,9 +21,9 @@ class TaxiFixed {
     	boolean reachedDestination;
     	synchronized (this) {
             this.location = location;
-            reachedDestination = location.equals(destination);    		
+            reachedDestination = location.equals(destination);
     	}
-    	
+
         if (reachedDestination) {
             dispatcher.notifyAvailable(this);
         }
@@ -41,8 +39,8 @@ class DispatcherFixed {
     private final Set<TaxiFixed> availableTaxis;
 
     public DispatcherFixed() {
-        taxis = new HashSet<TaxiFixed>();
-        availableTaxis = new HashSet<TaxiFixed>();
+        taxis = new HashSet<>();
+        availableTaxis = new HashSet<>();
     }
 
     public synchronized void notifyAvailable(TaxiFixed taxi) {
@@ -51,15 +49,22 @@ class DispatcherFixed {
 
     public Image getImage() {
     	Set<TaxiFixed> copy;
-    	
     	synchronized (this) {
-    		copy = new HashSet<TaxiFixed>(taxis);
+    		copy = new HashSet<>(taxis);
     	}
-    	
+
         Image image = new Image();
         for (TaxiFixed t : copy)
             image.drawMarker(t.getLocation());
         return image;
     }
+}
+
+class Image {
+    public void drawMarker(Point p) {
+    }
+}
+
+class Point {
 }
 
