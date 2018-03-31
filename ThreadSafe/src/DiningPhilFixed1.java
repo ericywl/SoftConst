@@ -30,7 +30,7 @@ class PhilosopherOrdered extends Thread {
     }
 
     public void run() {
-        // impose an order, take only the lower index fork
+        // impose an order, take only the lower-indexed fork
         boolean orderCheck = left.getIndex() < right.getIndex();
         ForkOrdered first = orderCheck ? left : right;
         String firstStr = orderCheck ? "left" : "right";

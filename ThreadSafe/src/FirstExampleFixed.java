@@ -1,5 +1,3 @@
-import sun.rmi.transport.ObjectTable;
-
 import java.util.Vector;
 
 @SuppressWarnings("SynchronizationOnLocalVariableOrMethodParameter")

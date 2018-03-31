@@ -4,6 +4,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class SynchronizedAccount {
     private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    // guarded by the above lock
     private AtomicInteger balance;
 
     SynchronizedAccount() {
@@ -14,6 +15,9 @@ public class SynchronizedAccount {
         this.balance = new AtomicInteger(balance);
     }
 
+    // guarded by lock.writeLock()
+    // pre-condition: no one else is reading & writing
+    // post-condition: add amount to balance
     public void deposit(Integer amount) {
         if (amount <= 0) {
             System.out.println("Invalid amount.");
@@ -30,6 +34,9 @@ public class SynchronizedAccount {
         }
     }
 
+    // guarded by lock.writeLock()
+    // pre-condition: no one else is reading & writing
+    // post-condition: minus amount from balance if sufficient balance
     public boolean withdraw(Integer amount) {
         if (amount <= 0) {
             System.out.println("Invalid amount.");
@@ -55,6 +62,9 @@ public class SynchronizedAccount {
         return success;
     }
 
+    // guarded by lock.readLock()
+    // pre-condition: no one is writing
+    // post-condition: balance unchanged, return balance
     public Integer checkBalance() {
         Integer result;
         lock.readLock().lock();
@@ -101,5 +111,11 @@ class TestAccount {
         System.out.println();
         Thread.sleep(100);
         account.checkBalance();
+
+
+        final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+        lock.readLock().lock();
+        lock.writeLock().lock();
+        System.out.println("Does not reach here.");
     }
 }
