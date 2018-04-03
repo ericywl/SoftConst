@@ -32,15 +32,18 @@ class PhilosopherTryLock extends Thread {
     }
 
     public void run() {
-        Random randomGenerator = new Random();
+        // each fork is guarded by its own lock
         ReentrantLock leftLock = left.getLock();
         ReentrantLock rightLock = right.getLock();
+        Random randomGenerator = new Random();
 
         try {
             while (true) {
                 Thread.sleep(randomGenerator.nextInt(1000)); // not sleeping but thinking
                 System.out.println("Phil " + index + " finishes thinking.");
 
+                // try to obtain both locks
+                // failure to obtain both together would result in both locks being released
                 boolean leftFlag = leftLock.tryLock(1000, TimeUnit.MILLISECONDS);
                 boolean rightFlag = rightLock.tryLock(1000, TimeUnit.MILLISECONDS);
                 if (leftFlag && rightFlag) {

@@ -19,6 +19,8 @@ public class CacheV3 {
             Callable<List<Integer>> eval = () -> factor(input);
 
             FutureTask<List<Integer>> ft = new FutureTask<>(eval);
+            // putIfAbsent returns the object if already exists, else null
+            // if return value is null, run the task
             f = results.putIfAbsent(input, ft);
             if (f == null) {
                 f = ft;
