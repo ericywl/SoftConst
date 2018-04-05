@@ -47,7 +47,7 @@ public class MyCyclicBarrierAnswer {
                 barrier.await();
                 System.out.println(Thread.currentThread().getName() + " has crossed the barrier");
             } catch (Exception ex) {
-                Logger.getLogger(BarrierExample.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MyCyclicBarrierAnswer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
